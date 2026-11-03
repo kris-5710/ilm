@@ -357,6 +357,36 @@
     applyFilters();
   }
 
+  // --- 4f. Back to Top Floating Button ---
+  function initBackToTop() {
+    let btn = document.getElementById('btn-back-to-top');
+    if (!btn) {
+      btn = document.createElement('button');
+      btn.type = 'button';
+      btn.id = 'btn-back-to-top';
+      btn.className = 'btn-back-to-top';
+      btn.setAttribute('aria-label', 'Scroll back to top');
+      btn.setAttribute('title', 'Scroll back to top');
+      btn.innerHTML = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="18 15 12 9 6 15"></polyline></svg>`;
+      document.body.appendChild(btn);
+    }
+
+    const handleScroll = () => {
+      if (window.scrollY > 350) {
+        btn.classList.add('is-visible');
+      } else {
+        btn.classList.remove('is-visible');
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    handleScroll();
+
+    btn.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  }
+
   // --- 5. Global Toast Notification System ---
   function showToast(message, type = 'success') {
     let container = document.querySelector('.toast-container');
@@ -465,6 +495,7 @@
     initHomepageEvents();
     initHomepageExtras();
     initExploreEventsPage();
+    initBackToTop();
     initScrollReveals();
     initHeroVideoModal();
   });
