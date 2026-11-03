@@ -2228,6 +2228,511 @@ p {
   }
 }
 
+/* ==========================================================================
+   Event Details Page & Sticky Booking Panel (Ref 2, 7, 9, 10, 12, 13)
+   ========================================================================== */
+.event-hero {
+  position: relative;
+  padding: 11rem 0 4.5rem;
+  min-height: 520px;
+  display: flex;
+  align-items: flex-end;
+  background-color: var(--bg-primary);
+  overflow: hidden;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.event-hero-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 30%;
+  filter: brightness(0.6) contrast(1.15);
+}
+
+.event-hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: 
+    linear-gradient(180deg, rgba(9, 9, 9, 0.5) 0%, rgba(9, 9, 9, 0.8) 60%, #090909 100%),
+    linear-gradient(90deg, #090909 0%, rgba(9, 9, 9, 0.7) 50%, transparent 100%);
+  pointer-events: none;
+}
+
+.event-hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 860px;
+}
+
+.event-hero-meta-strip {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  margin-bottom: 1rem;
+}
+
+.event-hero-title {
+  font-size: clamp(2.4rem, 5.2vw, 4.2rem);
+  font-family: var(--font-heading);
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--text-primary);
+  line-height: 1.05;
+  margin-bottom: 1rem;
+}
+
+.event-hero-tagline {
+  font-size: clamp(1.05rem, 1.8vw, 1.25rem);
+  color: var(--text-secondary);
+  line-height: 1.5;
+  margin-bottom: 1.5rem;
+}
+
+.event-hero-details-row {
+  display: flex;
+  align-items: center;
+  gap: 1.75rem;
+  flex-wrap: wrap;
+  font-size: 0.92rem;
+  color: var(--text-secondary);
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--border-subtle);
+}
+
+.event-hero-detail-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.event-hero-detail-item svg {
+  width: 16px;
+  height: 16px;
+  stroke: var(--accent-primary);
+  flex-shrink: 0;
+}
+
+/* Two-Column Detail Layout */
+.event-detail-grid {
+  display: grid;
+  grid-template-columns: 1.35fr 0.65fr;
+  gap: 3.5rem;
+  align-items: start;
+}
+
+.event-main-col {
+  display: flex;
+  flex-direction: column;
+  gap: 3.5rem;
+}
+
+.detail-block-title {
+  font-size: 1.5rem;
+  font-family: var(--font-heading);
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--text-primary);
+  margin-bottom: 1.25rem;
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+}
+
+.detail-block-title::before {
+  content: '';
+  display: inline-block;
+  width: 4px;
+  height: 20px;
+  background-color: var(--accent-primary);
+  border-radius: 2px;
+}
+
+.detail-text {
+  font-size: 1.05rem;
+  color: var(--text-secondary);
+  line-height: 1.7;
+}
+
+/* Lineup Mini Cards (Ref 12) */
+.lineup-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+}
+
+.lineup-mini-card {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: transform var(--transition-fast), border-color var(--transition-fast);
+}
+
+.lineup-mini-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--accent-primary);
+}
+
+.lineup-mini-img {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  filter: contrast(1.1);
+}
+
+.lineup-mini-body {
+  padding: 1rem;
+}
+
+.lineup-mini-name {
+  font-family: var(--font-heading);
+  font-size: 1rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--text-primary);
+  margin-bottom: 0.2rem;
+}
+
+.lineup-mini-role {
+  font-size: 0.75rem;
+  color: var(--accent-primary);
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+/* Stage Schedule Timetable (Ref 10) */
+.schedule-table-wrap {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+}
+
+.schedule-row {
+  display: grid;
+  grid-template-columns: 140px 1fr 140px;
+  align-items: center;
+  padding: 1.15rem 1.5rem;
+  border-bottom: 1px solid var(--border-subtle);
+  transition: background-color var(--transition-fast);
+}
+
+.schedule-row:last-child {
+  border-bottom: none;
+}
+
+.schedule-row:hover {
+  background-color: rgba(255, 84, 46, 0.04);
+}
+
+.schedule-time {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  color: var(--accent-primary);
+  font-size: 0.95rem;
+}
+
+.schedule-artist {
+  font-size: 0.98rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.schedule-stage {
+  text-align: right;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* Venue & Stage Map (Ref 9) */
+.venue-map-card {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-md);
+  padding: 1.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.venue-map-diagram {
+  width: 100%;
+  max-width: 480px;
+  margin: 0 auto;
+  border-radius: var(--radius-sm);
+  background-color: #121212;
+  padding: 1.5rem;
+  border: 1px solid var(--border-subtle);
+}
+
+.venue-map-legend {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.75rem;
+  flex-wrap: wrap;
+  font-size: 0.82rem;
+  color: var(--text-secondary);
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+}
+
+.legend-color-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 2px;
+}
+
+/* FAQ Accordion */
+.faq-accordion {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.faq-item {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+}
+
+.faq-question {
+  width: 100%;
+  padding: 1.25rem 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  text-align: left;
+  font-family: var(--font-heading);
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.faq-question svg {
+  width: 16px;
+  height: 16px;
+  stroke: var(--accent-primary);
+  transition: transform var(--transition-smooth);
+}
+
+.faq-item.is-open .faq-question svg {
+  transform: rotate(180deg);
+}
+
+.faq-answer {
+  display: none;
+  padding: 0 1.5rem 1.25rem;
+  font-size: 0.92rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+.faq-item.is-open .faq-answer {
+  display: block;
+}
+
+/* Sticky Booking Panel (Ref 6 & 7) */
+.sticky-booking-panel {
+  position: sticky;
+  top: 90px;
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-lg);
+  padding: 1.75rem;
+  box-shadow: 0 15px 45px rgba(0, 0, 0, 0.7);
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.booking-panel-header {
+  padding-bottom: 1.25rem;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.booking-panel-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  text-transform: uppercase;
+  margin-bottom: 0.35rem;
+}
+
+.booking-panel-sub {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+.ticket-tiers-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+
+.ticket-tier-card {
+  background-color: #141414;
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-md);
+  padding: 1.15rem;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  position: relative;
+}
+
+.ticket-tier-card:hover {
+  border-color: var(--border-highlight);
+  background-color: #191919;
+}
+
+.ticket-tier-card.is-selected {
+  border-color: var(--accent-primary);
+  background-color: rgba(255, 84, 46, 0.08);
+  box-shadow: 0 0 20px var(--accent-primary-glow);
+}
+
+.tier-card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.tier-name {
+  font-family: var(--font-heading);
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  text-transform: uppercase;
+}
+
+.tier-price {
+  font-family: var(--font-heading);
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--accent-primary);
+}
+
+.tier-features-list {
+  font-size: 0.78rem;
+  color: var(--text-secondary);
+  line-height: 1.5;
+  margin-top: 0.4rem;
+  padding-left: 1rem;
+  list-style: disc;
+}
+
+/* Quantity Counter */
+.qty-control-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 0;
+  border-top: 1px solid var(--border-subtle);
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.qty-counter {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  background-color: #121212;
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-sm);
+  padding: 0.25rem 0.5rem;
+}
+
+.qty-btn {
+  width: 28px;
+  height: 28px;
+  border-radius: 4px;
+  background-color: #1a1a1a;
+  color: var(--text-primary);
+  font-size: 1.1rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.qty-btn:hover {
+  background-color: var(--accent-primary);
+  color: #fff;
+}
+
+.qty-display {
+  font-family: var(--font-heading);
+  font-size: 1rem;
+  font-weight: 700;
+  min-width: 24px;
+  text-align: center;
+  color: var(--text-primary);
+}
+
+.booking-total-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.booking-total-label {
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.booking-total-val {
+  font-family: var(--font-heading);
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+/* Responsive details layout */
+@media (max-width: 1024px) {
+  .event-detail-grid {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+  .sticky-booking-panel {
+    position: static;
+  }
+}
+
+@media (max-width: 640px) {
+  .lineup-cards-grid {
+    grid-template-columns: 1fr;
+  }
+  .schedule-row {
+    grid-template-columns: 90px 1fr;
+  }
+  .schedule-stage {
+    grid-column: span 2;
+    text-align: left;
+    margin-top: 0.25rem;
+  }
+}
+
+
 
 
 
