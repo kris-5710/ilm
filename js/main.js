@@ -127,6 +127,39 @@
     document.querySelectorAll('.reveal-on-scroll').forEach(el => observer.observe(el));
   }
 
+  // --- 4b. Hero Video Modal ---
+  function initHeroVideoModal() {
+    const videoBtn = document.getElementById('btn-hero-video');
+    const modal = document.getElementById('video-modal');
+    const closeBtn = document.getElementById('btn-close-video');
+
+    if (!videoBtn || !modal) return;
+
+    function openModal() {
+      modal.style.display = 'flex';
+      requestAnimationFrame(() => modal.classList.add('is-open'));
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeModal() {
+      modal.classList.remove('is-open');
+      setTimeout(() => {
+        modal.style.display = 'none';
+        document.body.style.overflow = '';
+      }, 300);
+    }
+
+    videoBtn.addEventListener('click', openModal);
+    if (closeBtn) closeBtn.addEventListener('click', closeModal);
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) closeModal();
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && modal.classList.contains('is-open')) closeModal();
+    });
+  }
+
   // --- 5. Global Toast Notification System ---
   function showToast(message, type = 'success') {
     let container = document.querySelector('.toast-container');
@@ -233,5 +266,6 @@
     initMobileNav();
     initThemeToggle();
     initScrollReveals();
+    initHeroVideoModal();
   });
 })();
