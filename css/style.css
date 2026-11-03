@@ -2732,6 +2732,229 @@ p {
   }
 }
 
+/* ==========================================================================
+   Registration Form & Confirmation Pass (Ref 5, 6, 9)
+   ========================================================================== */
+.registration-container {
+  max-width: 780px;
+  margin: 0 auto;
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-lg);
+  padding: clamp(1.75rem, 4vw, 3rem);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7);
+  position: relative;
+}
+
+.registration-header {
+  text-align: center;
+  margin-bottom: 2.25rem;
+}
+
+.registration-title {
+  font-size: clamp(1.75rem, 3.5vw, 2.5rem);
+  font-family: var(--font-heading);
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--text-primary);
+  margin-bottom: 0.5rem;
+}
+
+.registration-sub {
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+}
+
+.form-grid-2col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.25rem;
+}
+
+.form-input-icon-wrap {
+  position: relative;
+  width: 100%;
+}
+
+.form-input-icon {
+  position: absolute;
+  left: 1.15rem;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 18px;
+  height: 18px;
+  stroke: var(--text-muted);
+  pointer-events: none;
+}
+
+.form-input-padded {
+  padding-left: 2.9rem;
+}
+
+/* Order Summary Box */
+.order-summary-box {
+  background-color: #131313;
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: 1.35rem 1.6rem;
+  margin: 1.75rem 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.order-summary-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+}
+
+.order-summary-row.total-row {
+  padding-top: 0.75rem;
+  border-top: 1px solid var(--border-subtle);
+  font-family: var(--font-heading);
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.order-summary-row.total-row .total-amount {
+  color: var(--accent-primary);
+}
+
+/* Confirmation Screen (YOU'RE ON THE LIST!) */
+.confirmation-card {
+  text-align: center;
+  padding: 3rem 1.5rem;
+  background-color: var(--bg-card);
+  border: 1px solid rgba(46, 196, 182, 0.4);
+  border-radius: var(--radius-lg);
+  box-shadow: 0 0 40px rgba(46, 196, 182, 0.15);
+  animation: fadeInUp 0.6s ease forwards;
+}
+
+.confirmation-icon-circle {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background-color: rgba(46, 196, 182, 0.15);
+  border: 2px solid var(--accent-green);
+  color: var(--accent-green);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 1.5rem;
+}
+
+.confirmation-icon-circle svg {
+  width: 32px;
+  height: 32px;
+  stroke: var(--accent-green);
+}
+
+.confirmation-title {
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-family: var(--font-heading);
+  font-weight: 700;
+  color: var(--text-primary);
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+}
+
+.confirmation-sub {
+  font-size: 1.05rem;
+  color: var(--text-secondary);
+  max-width: 500px;
+  margin: 0 auto 2rem;
+}
+
+/* Ticket Pass Voucher */
+.ticket-pass-voucher {
+  background-color: #111111;
+  border: 1px dashed var(--border-light);
+  border-radius: var(--radius-md);
+  padding: 2rem;
+  margin: 0 auto 2.5rem;
+  max-width: 520px;
+  text-align: left;
+  position: relative;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+.ticket-pass-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--border-subtle);
+  margin-bottom: 1.25rem;
+}
+
+.ticket-pass-event-title {
+  font-family: var(--font-heading);
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  text-transform: uppercase;
+  margin-bottom: 0.25rem;
+}
+
+.ticket-pass-meta-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.ticket-pass-field-label {
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--text-muted);
+  margin-bottom: 0.2rem;
+}
+
+.ticket-pass-field-val {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.qr-code-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding-top: 1.25rem;
+  border-top: 1px dashed var(--border-light);
+}
+
+.qr-code-svg {
+  width: 100px;
+  height: 100px;
+  background-color: #FFFFFF;
+  padding: 8px;
+  border-radius: 4px;
+  margin-bottom: 0.5rem;
+}
+
+.confirmation-actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.25rem;
+  flex-wrap: wrap;
+}
+
+@media (max-width: 640px) {
+  .form-grid-2col {
+    grid-template-columns: 1fr;
+  }
+}
+
+
 
 
 
