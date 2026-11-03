@@ -1609,6 +1609,343 @@ p {
   }
 }
 
+/* ==========================================================================
+   Featured Festival Countdown Banner (Ref 6, 11, 4)
+   ========================================================================== */
+.countdown-section {
+  position: relative;
+  padding: clamp(5rem, 8vw, 8rem) 0;
+  overflow: hidden;
+  background-color: var(--bg-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.countdown-bg-wrap {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.countdown-bg-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 40%;
+  filter: brightness(0.48) contrast(1.2);
+  transform: scale(1.05);
+}
+
+.countdown-overlay {
+  position: absolute;
+  inset: 0;
+  background: 
+    linear-gradient(180deg, #090909 0%, rgba(9, 9, 9, 0.7) 45%, #090909 100%),
+    radial-gradient(circle at center, rgba(157, 78, 221, 0.22) 0%, transparent 65%),
+    radial-gradient(circle at 80% 30%, rgba(255, 84, 46, 0.18) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+.countdown-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  max-width: 880px;
+  margin: 0 auto;
+}
+
+.countdown-timer-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.25rem;
+  margin: 2.75rem 0 3rem;
+  flex-wrap: wrap;
+}
+
+.countdown-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-width: 115px;
+  padding: 1.35rem 1.15rem;
+  background: rgba(22, 22, 22, 0.82);
+  border: 1px solid rgba(255, 84, 46, 0.45);
+  border-radius: var(--radius-md);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.75), 0 0 20px rgba(255, 84, 46, 0.15);
+  transition: transform var(--transition-fast), border-color var(--transition-fast);
+}
+
+.countdown-box:hover {
+  transform: translateY(-4px);
+  border-color: var(--accent-primary);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.8), 0 0 25px var(--accent-primary-glow);
+}
+
+.countdown-num {
+  font-family: var(--font-display);
+  font-size: clamp(3.2rem, 5vw, 4.4rem);
+  font-weight: 400;
+  line-height: 1;
+  color: #FFFFFF;
+  letter-spacing: 0.04em;
+  text-shadow: 0 0 20px rgba(255, 84, 46, 0.4);
+}
+
+.countdown-label {
+  font-family: var(--font-heading);
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--accent-primary);
+  margin-top: 0.4rem;
+}
+
+.countdown-divider {
+  font-family: var(--font-display);
+  font-size: 3rem;
+  color: var(--accent-primary);
+  opacity: 0.7;
+  user-select: none;
+  margin-top: -15px;
+}
+
+.countdown-actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.25rem;
+  flex-wrap: wrap;
+}
+
+/* ==========================================================================
+   Global Footer Component (Ref 4 & 5)
+   ========================================================================== */
+.site-footer {
+  background-color: #0b0b0b;
+  border-top: 1px solid var(--border-subtle);
+  position: relative;
+  z-index: 10;
+  margin-top: auto;
+}
+
+/* Newsletter Bar (Ref 5: GET TRENDING EVENT NOTIFICATIONS) */
+.newsletter-strip {
+  border-bottom: 1px solid var(--border-light);
+  padding: 3.5rem 0;
+  background: linear-gradient(90deg, #121212 0%, #171717 100%);
+}
+
+.newsletter-grid {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  align-items: center;
+  gap: 2.5rem;
+}
+
+.newsletter-title {
+  font-size: clamp(1.4rem, 2.2vw, 1.85rem);
+  color: var(--text-primary);
+  margin-bottom: 0.35rem;
+}
+
+.newsletter-form {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  width: 100%;
+}
+
+.newsletter-input {
+  flex: 1;
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-full);
+  padding: 0.85rem 1.4rem;
+  color: var(--text-primary);
+  font-size: 0.92rem;
+  outline: none;
+  transition: all var(--transition-fast);
+}
+
+.newsletter-input:focus {
+  border-color: var(--accent-primary);
+  box-shadow: 0 0 0 3px var(--accent-primary-glow);
+}
+
+/* Main Footer Content */
+.footer-main {
+  padding: 4.5rem 0 3.5rem;
+  display: grid;
+  grid-template-columns: 1.3fr 0.9fr 0.9fr 1fr;
+  gap: 3rem;
+}
+
+.footer-brand-desc {
+  font-size: 0.88rem;
+  color: var(--text-secondary);
+  line-height: 1.65;
+  margin: 1.2rem 0 1.5rem;
+  max-width: 320px;
+}
+
+.footer-heading {
+  font-family: var(--font-heading);
+  font-size: 0.92rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-primary);
+  margin-bottom: 1.35rem;
+}
+
+.footer-links {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.footer-link {
+  font-size: 0.88rem;
+  color: var(--text-secondary);
+  transition: color var(--transition-fast), transform var(--transition-fast);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.footer-link:hover {
+  color: var(--accent-primary);
+  transform: translateX(4px);
+}
+
+.social-links {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  margin-top: 1.15rem;
+}
+
+.social-btn {
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  border: 1px solid var(--border-light);
+  background-color: var(--bg-card);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-secondary);
+  transition: all var(--transition-fast);
+}
+
+.social-btn:hover {
+  background-color: var(--accent-primary);
+  border-color: var(--accent-primary);
+  color: #FFFFFF;
+  transform: translateY(-3px);
+  box-shadow: 0 4px 15px var(--accent-primary-glow);
+}
+
+.social-btn svg {
+  width: 16px;
+  height: 16px;
+}
+
+.footer-contact-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.65rem;
+  font-size: 0.88rem;
+  color: var(--text-secondary);
+  margin-bottom: 0.75rem;
+  line-height: 1.45;
+}
+
+.footer-contact-item svg {
+  width: 16px;
+  height: 16px;
+  stroke: var(--accent-primary);
+  margin-top: 2px;
+  flex-shrink: 0;
+}
+
+/* Footer Bottom Bar */
+.footer-bottom {
+  border-top: 1px solid var(--border-subtle);
+  padding: 1.75rem 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.footer-legal-links {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.footer-legal-links a {
+  color: var(--text-muted);
+}
+
+.footer-legal-links a:hover {
+  color: var(--text-primary);
+}
+
+/* Responsive Footer & Countdown Breakpoints */
+@media (max-width: 1024px) {
+  .newsletter-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  .footer-main {
+    grid-template-columns: 1fr 1fr;
+    gap: 2.5rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .countdown-box {
+    min-width: 80px;
+    padding: 1rem 0.75rem;
+  }
+  .countdown-divider {
+    display: none;
+  }
+  .newsletter-form {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .newsletter-form .btn {
+    width: 100%;
+  }
+  .footer-main {
+    grid-template-columns: 1fr;
+    gap: 2.25rem;
+  }
+  .footer-bottom {
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
+  }
+  .footer-legal-links {
+    justify-content: center;
+  }
+}
+
+
 
 
 

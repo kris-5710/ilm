@@ -174,6 +174,45 @@
     }
   }
 
+  // --- 4d. Homepage Festival Countdown & Newsletter ---
+  function initHomepageExtras() {
+    // 1. Countdown Timer
+    const countdownEl = document.getElementById('homepage-countdown');
+    if (countdownEl && window.FestoraUI && window.FestoraUI.initCountdown) {
+      // Pick target date: 280 days ahead from today for live ticking demo
+      const futureDate = new Date();
+      futureDate.setDate(futureDate.getDate() + 45);
+      futureDate.setHours(18, 0, 0, 0);
+      window.FestoraUI.initCountdown(futureDate.toISOString(), countdownEl);
+    }
+
+    // 2. Newsletter Form
+    const newsletterForm = document.getElementById('newsletter-form');
+    if (newsletterForm) {
+      newsletterForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const emailInput = document.getElementById('newsletter-email');
+        const email = emailInput ? emailInput.value.trim() : '';
+
+        // Simple RFC regex check
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!email || !emailRegex.test(email)) {
+          if (window.FestoraUI && window.FestoraUI.showToast) {
+            window.FestoraUI.showToast('Please enter a valid email address.', 'error');
+          }
+          if (emailInput) emailInput.focus();
+          return;
+        }
+
+        // Success simulation
+        if (window.FestoraUI && window.FestoraUI.showToast) {
+          window.FestoraUI.showToast('You are on the list! Secret drops & lineups will arrive in your inbox.');
+        }
+        if (emailInput) emailInput.value = '';
+      });
+    }
+  }
+
   // --- 5. Global Toast Notification System ---
   function showToast(message, type = 'success') {
     let container = document.querySelector('.toast-container');
@@ -280,6 +319,7 @@
     initMobileNav();
     initThemeToggle();
     initHomepageEvents();
+    initHomepageExtras();
     initScrollReveals();
     initHeroVideoModal();
   });

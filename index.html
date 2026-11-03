@@ -523,8 +523,226 @@
       </div>
     </section>
 
-    <!-- Placeholder for Countdown & Footer (Milestone 7) -->
-    <div id="countdown-footer-mount"></div>
+    <!-- ==========================================================================
+         6. Featured Festival Countdown Banner (Ref 6, 11, 4)
+         ========================================================================== -->
+    <section class="countdown-section" id="festival-countdown" aria-label="Featured Festival Countdown">
+      
+      <!-- Atmospheric Festival Backdrop -->
+      <div class="countdown-bg-wrap">
+        <img class="countdown-bg-img" 
+             src="assets/images/backgrounds/countdown-bg.jpg" 
+             alt="Echoes of Tomorrow massive illuminated stage" 
+             loading="lazy">
+        <div class="countdown-overlay"></div>
+      </div>
+
+      <div class="container countdown-content">
+        
+        <!-- Overline Tag -->
+        <div class="badge badge-orange reveal-on-scroll" style="margin-bottom: 1.25rem;">
+          <span>FEATURED MEGA FESTIVAL</span>
+        </div>
+
+        <!-- Festival Title -->
+        <h2 class="section-title reveal-on-scroll" style="font-size: clamp(2.2rem, 4.8vw, 3.8rem); line-height: 1.05; margin-bottom: 1rem;">
+          ECHOES OF TOMORROW 2025
+        </h2>
+
+        <!-- Event Details Meta -->
+        <p class="reveal-on-scroll" style="font-size: clamp(1rem, 1.6vw, 1.2rem); color: var(--text-secondary); max-width: 680px; margin: 0 auto;">
+          August 20–22, 2025 • Vagator Hilltop, Goa • 3 Stages • 48 Hours of Sonic Euphoria
+        </p>
+
+        <!-- Working Live Countdown Display -->
+        <div class="countdown-timer-wrap reveal-on-scroll" id="homepage-countdown" data-target="2025-08-20T15:00:00" role="timer" aria-live="polite">
+          
+          <div class="countdown-box">
+            <span class="countdown-num" data-unit="days">00</span>
+            <span class="countdown-label">DAYS</span>
+          </div>
+
+          <span class="countdown-divider" aria-hidden="true">:</span>
+
+          <div class="countdown-box">
+            <span class="countdown-num" data-unit="hours">00</span>
+            <span class="countdown-label">HOURS</span>
+          </div>
+
+          <span class="countdown-divider" aria-hidden="true">:</span>
+
+          <div class="countdown-box">
+            <span class="countdown-num" data-unit="minutes">00</span>
+            <span class="countdown-label">MINUTES</span>
+          </div>
+
+          <span class="countdown-divider" aria-hidden="true">:</span>
+
+          <div class="countdown-box">
+            <span class="countdown-num" data-unit="seconds">00</span>
+            <span class="countdown-label">SECONDS</span>
+          </div>
+
+        </div>
+
+        <!-- Call to Action Buttons -->
+        <div class="countdown-actions reveal-on-scroll">
+          <a href="event-details.html?id=echoes-tomorrow" class="btn btn-primary btn-pill btn-lg glow-orange">
+            <span>SECURE EARLY BIRD PASSES ↗</span>
+          </a>
+          <a href="event-details.html?id=echoes-tomorrow" class="btn btn-secondary btn-pill btn-lg">
+            <span>VIEW FULL LINEUP</span>
+          </a>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ==========================================================================
+       7. Global Footer Component (Ref 4 & 5)
+       ========================================================================== -->
+  <footer class="site-footer" role="contentinfo">
+    
+    <!-- Newsletter Strip (Ref 5: GET TRENDING EVENT NOTIFICATIONS) -->
+    <div class="newsletter-strip">
+      <div class="container newsletter-grid">
+        
+        <div>
+          <span class="section-tag" style="margin-bottom: 0.35rem;">STAY TUNED</span>
+          <h3 class="newsletter-title">GET TRENDING EVENT NOTIFICATIONS</h3>
+          <p style="font-size: 0.9rem; color: var(--text-secondary); margin: 0;">
+            Be the first to unlock exclusive secret warehouse drops, headliner announcements, and early bird tickets.
+          </p>
+        </div>
+
+        <form class="newsletter-form" id="newsletter-form" novalidate>
+          <input type="email" 
+                 class="newsletter-input" 
+                 id="newsletter-email" 
+                 placeholder="Enter your email address..." 
+                 aria-label="Email address for notifications" 
+                 required>
+          <button type="submit" class="btn btn-primary btn-pill">
+            <span>SUBSCRIBE</span>
+            <svg class="icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+              <polyline points="12 5 19 12 12 19"></polyline>
+            </svg>
+          </button>
+        </form>
+
+      </div>
+    </div>
+
+    <!-- Main Footer Grid -->
+    <div class="container footer-main">
+      
+      <!-- Brand & Mission Column -->
+      <div>
+        <a href="index.html" class="brand-logo" aria-label="FESTORA Home">
+          <span class="logo-bars" aria-hidden="true">
+            <span class="logo-bar"></span>
+            <span class="logo-bar"></span>
+            <span class="logo-bar"></span>
+          </span>
+          <span>FESTORA<span class="accent-dot">.</span></span>
+        </a>
+        <p class="footer-brand-desc">
+          Feel the Music. Live the Moment. Discover unforgettable concerts, electronic music festivals, and live stadium tours worldwide.
+        </p>
+        <div class="social-links" aria-label="Social media channels">
+          <a href="#" class="social-btn" aria-label="Instagram">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect>
+              <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+              <line x1="17.5" x2="17.51" y1="6.5" y2="6.5"></line>
+            </svg>
+          </a>
+          <a href="#" class="social-btn" aria-label="X / Twitter">
+            <svg viewBox="0 0 24 24" fill="currentColor">
+              <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+            </svg>
+          </a>
+          <a href="#" class="social-btn" aria-label="YouTube">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"></path>
+              <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon>
+            </svg>
+          </a>
+          <a href="#" class="social-btn" aria-label="Spotify">
+            <svg viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- Quick Links -->
+      <div>
+        <h4 class="footer-heading">NAVIGATION</h4>
+        <ul class="footer-links">
+          <li><a href="index.html" class="footer-link">Home</a></li>
+          <li><a href="events.html" class="footer-link">Explore Events</a></li>
+          <li><a href="artists.html" class="footer-link">Featured Artists</a></li>
+          <li><a href="about.html" class="footer-link">About FESTORA</a></li>
+          <li><a href="bookings.html" class="footer-link">My Bookings</a></li>
+        </ul>
+      </div>
+
+      <!-- Genres -->
+      <div>
+        <h4 class="footer-heading">MUSIC GENRES</h4>
+        <ul class="footer-links">
+          <li><a href="events.html?genre=EDM" class="footer-link">EDM & Techno</a></li>
+          <li><a href="events.html?genre=Rock" class="footer-link">Rock & Alternative</a></li>
+          <li><a href="events.html?genre=Hip-Hop" class="footer-link">Hip-Hop & Urban</a></li>
+          <li><a href="events.html?genre=Indie" class="footer-link">Indie & Dream Pop</a></li>
+          <li><a href="events.html?genre=Pop" class="footer-link">Pop & Acoustic</a></li>
+        </ul>
+      </div>
+
+      <!-- Contact & Festival HQ -->
+      <div>
+        <h4 class="footer-heading">FESTIVAL HQ</h4>
+        <div class="footer-contact-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"></path>
+            <circle cx="12" cy="10" r="3"></circle>
+          </svg>
+          <span>Festival Tower, Bandra Kurla Complex, Mumbai, India</span>
+        </div>
+        <div class="footer-contact-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <rect width="20" height="16" x="2" y="4" rx="2"></rect>
+            <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
+          </svg>
+          <span>passes@festora.live</span>
+        </div>
+        <div class="footer-contact-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+          </svg>
+          <span>+91 (022) 8492-3000</span>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Bottom Legal Bar -->
+    <div class="container footer-bottom">
+      <div>
+        <span>© 2025 FESTORA Technologies Ltd. Feel the Music. Live the Moment.</span>
+      </div>
+      <div class="footer-legal-links">
+        <a href="about.html#terms">Terms of Service</a>
+        <a href="about.html#privacy">Privacy Policy</a>
+        <a href="about.html#security">Ticketing Guarantee</a>
+      </div>
+    </div>
+
+  </footer>
 
   </main>
 
