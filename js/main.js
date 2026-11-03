@@ -213,6 +213,150 @@
     }
   }
 
+  // --- 4e. Explore Events Dynamic Filter & Search Suite (Ref 7, 8, 13) ---
+  function initExploreEventsPage() {
+    const grid = document.getElementById('events-catalog-grid');
+    if (!grid || typeof FestoraData === 'undefined') return;
+
+    const searchInput = document.getElementById('filter-search-input');
+    const chips = document.querySelectorAll('.filter-chip');
+    const citySelect = document.getElementById('filter-city-select');
+    const sortSelect = document.getElementById('filter-sort-select');
+    const resetBtn = document.getElementById('btn-reset-filters');
+    const emptyResetBtn = document.getElementById('btn-empty-reset');
+    const emptyState = document.getElementById('events-empty-state');
+    const countEl = document.getElementById('results-count');
+    const activeFilterTag = document.getElementById('active-filter-indicator');
+
+    // Filter state
+    const state = {
+      query: '',
+      category: 'All',
+      city: 'All Cities',
+      sortBy: 'date-asc'
+    };
+
+    // Parse URL params (e.g. ?genre=EDM or ?focus=search)
+    const urlParams = new URLSearchParams(window.location.search);
+    if (urlParams.has('genre')) {
+      const g = urlParams.get('genre');
+      const validCategories = FestoraData.getCategories();
+      const match = validCategories.find(c => c.toLowerCase() === g.toLowerCase());
+      if (match) state.category = match;
+    }
+    if (urlParams.has('q')) {
+      state.query = urlParams.get('q');
+      if (searchInput) searchInput.value = state.query;
+    }
+    if (urlParams.has('city')) {
+      state.city = urlParams.get('city');
+      if (citySelect) citySelect.value = state.city;
+    }
+    if (urlParams.get('focus') === 'search' && searchInput) {
+      setTimeout(() => searchInput.focus(), 200);
+    }
+
+    // Sync chip UI with state
+    function updateChipUI() {
+      chips.forEach(chip => {
+        const chipGenre = chip.getAttribute('data-genre');
+        if (chipGenre.toLowerCase() === state.category.toLowerCase()) {
+          chip.classList.add('active');
+        } else {
+          chip.classList.remove('active');
+        }
+      });
+    }
+
+    // Apply filters and re-render
+    function applyFilters() {
+      const results = FestoraData.filterEvents(state);
+
+      if (countEl) countEl.textContent = results.length;
+
+      // Update active filter indicator text
+      if (activeFilterTag) {
+        const tags = [];
+        if (state.category !== 'All') tags.push(`Genre: ${state.category}`);
+        if (state.city !== 'All Cities') tags.push(`City: ${state.city}`);
+        if (state.query) tags.push(`Keyword: "${state.query}"`);
+        activeFilterTag.textContent = tags.length ? `(Active: ${tags.join(', ')})` : '';
+      }
+
+      if (results.length === 0) {
+        grid.style.display = 'none';
+        if (emptyState) emptyState.style.display = 'block';
+      } else {
+        grid.style.display = 'grid';
+        if (emptyState) emptyState.style.display = 'none';
+        grid.innerHTML = results.map(event => FestoraData.renderEventCard(event)).join('');
+
+        if (window.FestoraUI && window.FestoraUI.initScrollReveals) {
+          window.FestoraUI.initScrollReveals();
+        }
+      }
+    }
+
+    // Reset all filters
+    function resetAll() {
+      state.query = '';
+      state.category = 'All';
+      state.city = 'All Cities';
+      state.sortBy = 'date-asc';
+
+      if (searchInput) searchInput.value = '';
+      if (citySelect) citySelect.value = 'All Cities';
+      if (sortSelect) sortSelect.value = 'date-asc';
+      updateChipUI();
+      applyFilters();
+
+      // Clean URL without refresh
+      const cleanUrl = window.location.pathname;
+      window.history.replaceState({}, '', cleanUrl);
+    }
+
+    // Event listeners
+    if (searchInput) {
+      let debounceTimer;
+      searchInput.addEventListener('input', (e) => {
+        clearTimeout(debounceTimer);
+        debounceTimer = setTimeout(() => {
+          state.query = e.target.value.trim();
+          applyFilters();
+        }, 180);
+      });
+    }
+
+    chips.forEach(chip => {
+      chip.addEventListener('click', () => {
+        state.category = chip.getAttribute('data-genre') || 'All';
+        updateChipUI();
+        applyFilters();
+      });
+    });
+
+    if (citySelect) {
+      citySelect.addEventListener('change', (e) => {
+        state.city = e.target.value;
+        applyFilters();
+      });
+    }
+
+    if (sortSelect) {
+      sortSelect.addEventListener('change', (e) => {
+        state.sortBy = e.target.value;
+        applyFilters();
+      });
+    }
+
+    if (resetBtn) resetBtn.addEventListener('click', resetAll);
+    if (emptyResetBtn) emptyResetBtn.addEventListener('click', resetAll);
+
+    // Initial render
+    updateChipUI();
+    applyFilters();
+  }
+
   // --- 5. Global Toast Notification System ---
   function showToast(message, type = 'success') {
     let container = document.querySelector('.toast-container');
@@ -320,6 +464,7 @@
     initThemeToggle();
     initHomepageEvents();
     initHomepageExtras();
+    initExploreEventsPage();
     initScrollReveals();
     initHeroVideoModal();
   });
