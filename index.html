@@ -258,8 +258,273 @@
       </div>
     </section>
 
-    <!-- Placeholder for Categories & Artists (Milestone 6) -->
-    <div id="categories-artists-mount"></div>
+    <!-- ==========================================================================
+         4. Browse Music Categories (Ref 14)
+         ========================================================================== -->
+    <section class="section categories-section" id="categories" aria-label="Browse Music Categories">
+      <div class="category-neon-waves" aria-hidden="true"></div>
+      <div class="container">
+        
+        <div class="section-header reveal-on-scroll">
+          <div class="section-title-wrap">
+            <span class="section-tag">EXPLORE GENRES</span>
+            <h2 class="section-title">BROWSE BY CATEGORY</h2>
+            <p class="section-subtitle">Find your frequency. From thunderous festival mainstages to intimate underground acoustic sets.</p>
+          </div>
+          <div class="section-action">
+            <a href="events.html" class="btn btn-secondary btn-pill btn-sm">
+              <span>ALL GENRES</span>
+              <svg class="icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+                <polyline points="12 5 19 12 12 19"></polyline>
+              </svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- 6 Category Tiles (Ref 14) -->
+        <div class="category-grid">
+          
+          <!-- Tile 1: POP -->
+          <a href="events.html?genre=Pop" class="category-tile reveal-on-scroll" aria-label="Browse Pop Music Events">
+            <img class="category-tile-bg" src="assets/images/categories/pop.jpg" alt="Pop music festival" loading="lazy">
+            <div class="category-tile-overlay"></div>
+            <div class="category-tile-content">
+              <span class="category-pill">
+                <span>POP</span>
+                <svg viewBox="0 0 24 24" fill="none" stroke-width="2.5"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+              </span>
+            </div>
+          </a>
+
+          <!-- Tile 2: EDM -->
+          <a href="events.html?genre=EDM" class="category-tile reveal-on-scroll" aria-label="Browse EDM Music Events">
+            <img class="category-tile-bg" src="assets/images/categories/edm.jpg" alt="Electronic dance music festival" loading="lazy">
+            <div class="category-tile-overlay"></div>
+            <div class="category-tile-content">
+              <span class="category-pill">
+                <span>EDM</span>
+                <svg viewBox="0 0 24 24" fill="none" stroke-width="2.5"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+              </span>
+            </div>
+          </a>
+
+          <!-- Tile 3: INDIE -->
+          <a href="events.html?genre=Indie" class="category-tile reveal-on-scroll" aria-label="Browse Indie Music Events">
+            <img class="category-tile-bg" src="assets/images/categories/indie.jpg" alt="Indie music concert" loading="lazy">
+            <div class="category-tile-overlay"></div>
+            <div class="category-tile-content">
+              <span class="category-pill">
+                <span>INDIE</span>
+                <svg viewBox="0 0 24 24" fill="none" stroke-width="2.5"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+              </span>
+            </div>
+          </a>
+
+          <!-- Tile 4: ROCK -->
+          <a href="events.html?genre=Rock" class="category-tile reveal-on-scroll" aria-label="Browse Rock Music Events">
+            <img class="category-tile-bg" src="assets/images/categories/rock.jpg" alt="Rock music performance" loading="lazy">
+            <div class="category-tile-overlay"></div>
+            <div class="category-tile-content">
+              <span class="category-pill">
+                <span>ROCK</span>
+                <svg viewBox="0 0 24 24" fill="none" stroke-width="2.5"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+              </span>
+            </div>
+          </a>
+
+          <!-- Tile 5: JAZZ -->
+          <a href="events.html?genre=Pop" class="category-tile reveal-on-scroll" aria-label="Browse Jazz & Acoustic Events">
+            <img class="category-tile-bg" src="assets/images/categories/jazz.jpg" alt="Jazz and acoustic musician" loading="lazy">
+            <div class="category-tile-overlay"></div>
+            <div class="category-tile-content">
+              <span class="category-pill">
+                <span>JAZZ</span>
+                <svg viewBox="0 0 24 24" fill="none" stroke-width="2.5"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+              </span>
+            </div>
+          </a>
+
+          <!-- Tile 6: HIP HOP -->
+          <a href="events.html?genre=Hip-Hop" class="category-tile reveal-on-scroll" aria-label="Browse Hip-Hop Events">
+            <img class="category-tile-bg" src="assets/images/categories/hiphop.jpg" alt="Hip-Hop concert performance" loading="lazy">
+            <div class="category-tile-overlay"></div>
+            <div class="category-tile-content">
+              <span class="category-pill">
+                <span>HIP HOP</span>
+                <svg viewBox="0 0 24 24" fill="none" stroke-width="2.5"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+              </span>
+            </div>
+          </a>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         5. Featured Artists Showcase (Ref 12 & 13)
+         ========================================================================== -->
+    <section class="section artists-section" id="artists" aria-label="Featured Artists">
+      <div class="container">
+        
+        <div class="section-header reveal-on-scroll">
+          <div class="section-title-wrap">
+            <span class="section-tag">GLOBAL HEADLINERS</span>
+            <h2 class="section-title">FEATURED ARTISTS</h2>
+            <p class="section-subtitle">The visionary sound architects setting festival stages ablaze worldwide.</p>
+          </div>
+          <div class="section-action">
+            <a href="artists.html" class="btn btn-secondary btn-pill btn-sm">
+              <span>VIEW ALL ARTISTS</span>
+              <svg class="icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+                <polyline points="12 5 19 12 12 19"></polyline>
+              </svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Artists Grid (Ref 12 & 13) -->
+        <div class="artists-grid">
+          
+          <!-- Artist 1 -->
+          <article class="artist-card reveal-on-scroll">
+            <div class="artist-portrait-wrap">
+              <img class="artist-portrait" src="assets/images/artists/artist-01.jpg" alt="Charlotte de Witte" loading="lazy">
+              <div class="artist-badge-top">
+                <span class="badge badge-live">LIVE ACT</span>
+              </div>
+            </div>
+            <div class="artist-card-body">
+              <span class="artist-genre-tag">Acid Techno</span>
+              <h3 class="artist-name">Charlotte de Witte</h3>
+              <p class="artist-performance">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                <span>Headlining Sunburn Arena 2025</span>
+              </p>
+              <div class="artist-card-footer">
+                <span>Solar Stage • Dec 12</span>
+                <span style="display:inline-flex;align-items:center;gap:4px;">VIEW TOUR ↗</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Artist 2 -->
+          <article class="artist-card reveal-on-scroll">
+            <div class="artist-portrait-wrap">
+              <img class="artist-portrait" src="assets/images/artists/artist-02.jpg" alt="Amélie Lens" loading="lazy">
+              <div class="artist-badge-top">
+                <span class="badge badge-live">DJ SET</span>
+              </div>
+            </div>
+            <div class="artist-card-body">
+              <span class="artist-genre-tag">Peak-Time Techno</span>
+              <h3 class="artist-name">Amélie Lens</h3>
+              <p class="artist-performance">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                <span>Headlining Neon Nights</span>
+              </p>
+              <div class="artist-card-footer">
+                <span>Turbine Hall • Nov 08</span>
+                <span style="display:inline-flex;align-items:center;gap:4px;">VIEW TOUR ↗</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Artist 3 -->
+          <article class="artist-card reveal-on-scroll">
+            <div class="artist-portrait-wrap">
+              <img class="artist-portrait" src="assets/images/artists/artist-03.jpg" alt="Drayen" loading="lazy">
+              <div class="artist-badge-top">
+                <span class="badge badge-orange">HEADLINER</span>
+              </div>
+            </div>
+            <div class="artist-card-body">
+              <span class="artist-genre-tag">Alternative Rock</span>
+              <h3 class="artist-name">Drayen</h3>
+              <p class="artist-performance">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                <span>The Midnight Tour Live</span>
+              </p>
+              <div class="artist-card-footer">
+                <span>Main Stage • Sep 15</span>
+                <span style="display:inline-flex;align-items:center;gap:4px;">VIEW TOUR ↗</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Artist 4 -->
+          <article class="artist-card reveal-on-scroll">
+            <div class="artist-portrait-wrap">
+              <img class="artist-portrait" src="assets/images/artists/artist-04.jpg" alt="Joris Voorn" loading="lazy">
+              <div class="artist-badge-top">
+                <span class="badge badge-purple">SPECIAL GUEST</span>
+              </div>
+            </div>
+            <div class="artist-card-body">
+              <span class="artist-genre-tag">Melodic House</span>
+              <h3 class="artist-name">Joris Voorn</h3>
+              <p class="artist-performance">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                <span>Echoes of Tomorrow Main Stage</span>
+              </p>
+              <div class="artist-card-footer">
+                <span>Solar Stage • Aug 20</span>
+                <span style="display:inline-flex;align-items:center;gap:4px;">VIEW TOUR ↗</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Artist 5 -->
+          <article class="artist-card reveal-on-scroll">
+            <div class="artist-portrait-wrap">
+              <img class="artist-portrait" src="assets/images/artists/artist-05.jpg" alt="Alec Troniq" loading="lazy">
+              <div class="artist-badge-top">
+                <span class="badge badge-live">LIVE ACT</span>
+              </div>
+            </div>
+            <div class="artist-card-body">
+              <span class="artist-genre-tag">Deep Electronic</span>
+              <h3 class="artist-name">Alec Troniq</h3>
+              <p class="artist-performance">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                <span>Aurora Stage Live Session</span>
+              </p>
+              <div class="artist-card-footer">
+                <span>Aurora Stage • Dec 12</span>
+                <span style="display:inline-flex;align-items:center;gap:4px;">VIEW TOUR ↗</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Artist 6 -->
+          <article class="artist-card reveal-on-scroll">
+            <div class="artist-portrait-wrap">
+              <img class="artist-portrait" src="assets/images/artists/artist-06.jpg" alt="Sonora Collective" loading="lazy">
+              <div class="artist-badge-top">
+                <span class="badge badge-yellow">SPECIAL VOCAL</span>
+              </div>
+            </div>
+            <div class="artist-card-body">
+              <span class="artist-genre-tag">Dream Pop & Soul</span>
+              <h3 class="artist-name">Sonora Collective</h3>
+              <p class="artist-performance">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                <span>Indie Waves Festival Headline</span>
+              </p>
+              <div class="artist-card-footer">
+                <span>Garden Stage • Oct 04</span>
+                <span style="display:inline-flex;align-items:center;gap:4px;">VIEW TOUR ↗</span>
+              </div>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Placeholder for Countdown & Footer (Milestone 7) -->
+    <div id="countdown-footer-mount"></div>
 
   </main>
 
