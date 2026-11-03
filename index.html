@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FESTORA – Feel the Music. Live the Moment.</title>
+  <meta name="description" content="Discover world-class concerts, music festivals, live performances and artist tours. Explore lineups and book your passes with FESTORA.">
+  <meta name="theme-color" content="#090909">
+
+  <!-- Core Stylesheets -->
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/animations.css">
+</head>
+<body>
+
+  <!-- ==========================================================================
+       1. Navigation Bar (Ref 1, 6, 7, 8)
+       ========================================================================== -->
+  <header class="site-header" role="banner">
+    <div class="container nav-wrap">
+      
+      <!-- Brand Logo -->
+      <a href="index.html" class="brand-logo" aria-label="FESTORA Home">
+        <span class="logo-bars" aria-hidden="true">
+          <span class="logo-bar"></span>
+          <span class="logo-bar"></span>
+          <span class="logo-bar"></span>
+        </span>
+        <span>FESTORA<span class="accent-dot">.</span></span>
+      </a>
+
+      <!-- Desktop Navigation Menu -->
+      <nav class="nav-menu" role="navigation" aria-label="Main Navigation">
+        <a href="index.html" class="nav-link active">Home</a>
+        <a href="events.html" class="nav-link">Explore Events</a>
+        <a href="artists.html" class="nav-link">Artists</a>
+        <a href="about.html" class="nav-link">About</a>
+        <a href="bookings.html" class="nav-link">My Bookings</a>
+      </nav>
+
+      <!-- Nav Utility Actions -->
+      <div class="nav-actions">
+        <!-- Theme Switcher -->
+        <button type="button" class="btn-theme-toggle" aria-label="Switch Theme" title="Toggle Dark/Light Mode">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="5"></circle>
+            <line x1="12" y1="1" x2="12" y2="3"></line>
+            <line x1="12" y1="21" x2="12" y2="23"></line>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+            <line x1="1" y1="12" x2="3" y2="12"></line>
+            <line x1="21" y1="12" x2="23" y2="12"></line>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+          </svg>
+        </button>
+
+        <!-- Quick Search Link -->
+        <a href="events.html?focus=search" class="btn-search-trigger" aria-label="Search events" title="Search Events">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+        </a>
+
+        <!-- Primary CTA Button -->
+        <a href="events.html" class="btn btn-primary btn-pill btn-sm">
+          <span>GET TICKETS</span>
+          <svg class="icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <line x1="7" y1="17" x2="17" y2="7"></line>
+            <polyline points="7 7 17 7 17 17"></polyline>
+          </svg>
+        </a>
+
+        <!-- Mobile Menu Toggle Button -->
+        <button type="button" class="btn-nav-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Navigation Overlay & Drawer -->
+  <div class="mobile-nav-overlay" aria-hidden="true"></div>
+  <aside class="mobile-nav-drawer" aria-label="Mobile Navigation Drawer">
+    <div class="mobile-nav-links">
+      <a href="index.html" class="mobile-nav-link active">
+        <span>Home</span>
+        <span>→</span>
+      </a>
+      <a href="events.html" class="mobile-nav-link">
+        <span>Explore Events</span>
+        <span>→</span>
+      </a>
+      <a href="artists.html" class="mobile-nav-link">
+        <span>Artists</span>
+        <span>→</span>
+      </a>
+      <a href="about.html" class="mobile-nav-link">
+        <span>About</span>
+        <span>→</span>
+      </a>
+      <a href="bookings.html" class="mobile-nav-link">
+        <span>My Bookings</span>
+        <span>→</span>
+      </a>
+    </div>
+
+    <div class="mobile-nav-footer">
+      <a href="events.html" class="btn btn-primary btn-pill btn-block">
+        <span>EXPLORE EVENTS ↗</span>
+      </a>
+      <p style="font-size: 0.8rem; color: var(--text-muted); text-align: center;">
+        FESTORA © 2025. All rights reserved.
+      </p>
+    </div>
+  </aside>
+
+  <!-- Main Content Placeholder for Milestone 4+ -->
+  <main id="main-content" style="min-height: 80vh; padding-top: 100px;">
+    <!-- Sections will be incrementally added in Milestones 4-7 -->
+  </main>
+
+  <!-- Scripts -->
+  <script src="js/events.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
