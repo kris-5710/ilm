@@ -3179,6 +3179,81 @@ p {
   }
 }
 
+/* ==========================================================================
+   Artists Directory & Spotlight Banner (Ref 12 & 13)
+   ========================================================================== */
+.artist-spotlight-banner {
+  background: linear-gradient(90deg, #171717 0%, #111111 100%);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: 340px 1fr;
+  margin-bottom: 3.5rem;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6);
+}
+
+.artist-spotlight-img-wrap {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  min-height: 300px;
+  background-color: #1a1a1a;
+}
+
+.artist-spotlight-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: contrast(1.15);
+}
+
+.artist-spotlight-body {
+  padding: clamp(1.75rem, 3.5vw, 2.75rem);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.artist-spotlight-quote {
+  font-family: var(--font-heading);
+  font-size: clamp(1.2rem, 2vw, 1.65rem);
+  font-weight: 700;
+  color: var(--text-primary);
+  line-height: 1.3;
+  text-transform: uppercase;
+}
+
+.artist-bio-snippet {
+  font-size: 0.92rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+.artist-tag-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.75rem;
+  font-family: var(--font-heading);
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--accent-primary);
+  letter-spacing: 0.08em;
+}
+
+@media (max-width: 900px) {
+  .artist-spotlight-banner {
+    grid-template-columns: 1fr;
+  }
+  .artist-spotlight-img-wrap {
+    min-height: 240px;
+    max-height: 300px;
+  }
+}
+
+
 
 
 
