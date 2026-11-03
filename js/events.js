@@ -357,6 +357,46 @@ const FestoraData = {
     }
 
     return results;
+  },
+
+  renderEventCard(event) {
+    if (!event) return '';
+    return `
+      <article class="event-card reveal-on-scroll">
+        <div class="event-card-poster-wrap">
+          <img class="event-card-poster" src="${event.image}" alt="${event.name} event poster" loading="lazy">
+          <div class="event-card-poster-overlay"></div>
+          <div class="event-card-badges">
+            <span class="badge badge-yellow">${event.dateBadge}</span>
+            <span class="badge badge-dark">${event.category}</span>
+          </div>
+        </div>
+        <div class="event-card-body">
+          <h3 class="event-card-title">${event.name}</h3>
+          <p class="event-card-desc">${event.tagline || event.description}</p>
+          <div class="event-card-meta">
+            <div class="event-meta-row">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+              <span>${event.time}</span>
+            </div>
+            <div class="event-meta-row">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+              <span>${event.venue}, ${event.city}</span>
+            </div>
+          </div>
+          <div class="event-card-footer">
+            <div class="event-price-wrap">
+              <span class="event-price-label">Tickets from</span>
+              <span class="event-price-val">${event.formattedPrice}</span>
+            </div>
+            <a href="event-details.html?id=${event.id}" class="event-card-btn" aria-label="Explore ${event.name}">
+              <span>EXPLORE</span>
+              <svg style="width:12px;height:12px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+            </a>
+          </div>
+        </div>
+      </article>
+    `;
   }
 };
 

@@ -160,6 +160,20 @@
     });
   }
 
+  // --- 4c. Homepage Upcoming Events Dynamic Renderer ---
+  function initHomepageEvents() {
+    const grid = document.getElementById('homepage-events-grid');
+    if (!grid || typeof FestoraData === 'undefined') return;
+
+    const featured = FestoraData.getFeaturedEvents();
+    grid.innerHTML = featured.map(event => FestoraData.renderEventCard(event)).join('');
+    
+    // Re-observe scroll reveals on newly injected cards
+    if (window.FestoraUI && window.FestoraUI.initScrollReveals) {
+      window.FestoraUI.initScrollReveals();
+    }
+  }
+
   // --- 5. Global Toast Notification System ---
   function showToast(message, type = 'success') {
     let container = document.querySelector('.toast-container');
@@ -265,6 +279,7 @@
     initHeaderScroll();
     initMobileNav();
     initThemeToggle();
+    initHomepageEvents();
     initScrollReveals();
     initHeroVideoModal();
   });
