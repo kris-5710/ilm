@@ -234,3 +234,19 @@ All images were extracted locally from `FESTORA_Visual_References.pdf` (15 refer
 ---
 
 *Built for FESTORA © 2025. All rights reserved.*
+
+
+## Newsletter subscriptions & private admin dashboard
+
+The newsletter form now saves email addresses to Supabase. The private dashboard is available at `/admin.html` and supports admin sign-in, subscriber search, CSV export, refresh, and removal.
+
+### One-time Supabase setup
+
+1. Create a Supabase project at https://supabase.com/.
+2. In **Project Settings → API**, copy the Project URL and anon/public key into `js/supabase-config.js`. Never use the `service_role` key in frontend code.
+3. Open **SQL Editor** in Supabase and run the contents of `supabase/schema.sql`.
+4. In **Authentication → Users**, create an admin user with your email and a strong password. Disable public sign-ups in Authentication settings if you do not need them.
+5. In SQL Editor, run the admin grant query at the bottom of `supabase/schema.sql`, replacing `YOUR_ADMIN_EMAIL@example.com` with the exact admin email.
+6. Open `/admin.html` on your deployed website and sign in.
+
+Row Level Security allows visitors to insert a subscription but only user IDs listed in `admin_users` can read or remove subscribers. The browser only uses the anon/public key; the service-role key must remain private.
