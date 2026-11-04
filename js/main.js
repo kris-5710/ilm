@@ -189,7 +189,7 @@
     // 2. Newsletter Form
     const newsletterForm = document.getElementById('newsletter-form');
     if (newsletterForm) {
-      newsletterForm.addEventListener('submit', (e) => {
+      newsletterForm.addEventListener('submit', async (e) => {
         e.preventDefault();
         const emailInput = document.getElementById('newsletter-email');
         const email = emailInput ? emailInput.value.trim() : '';
@@ -204,11 +204,40 @@
           return;
         }
 
-        // Success simulation
-        if (window.FestoraUI && window.FestoraUI.showToast) {
-          window.FestoraUI.showToast('You are on the list! Secret drops & lineups will arrive in your inbox.');
+        // Save the subscription in Supabase (never pretend a local-only submission was saved).
+        const client = window.FestoraSupabase;
+        if (!client) {
+          if (window.FestoraUI && window.FestoraUI.showToast) {
+            window.FestoraUI.showToast('Newsletter signup is temporarily unavailable. Please try again later.', 'error');
+          }
+          return;
         }
-        if (emailInput) emailInput.value = '';
+
+        const submitButton = newsletterForm.querySelector('button[type="submit"]');
+        if (submitButton) submitButton.disabled = true;
+        try {
+          const { error } = await client
+            .from('newsletter_subscribers')
+            .insert({ email: email.toLowerCase() });
+
+          if (error && error.code === '23505') {
+            if (window.FestoraUI && window.FestoraUI.showToast) {
+              window.FestoraUI.showToast('This email is already subscribed.');
+            }
+          } else if (error) {
+            throw error;
+          } else if (window.FestoraUI && window.FestoraUI.showToast) {
+            window.FestoraUI.showToast('You are on the list! Secret drops & lineups will arrive in your inbox.');
+          }
+          if (emailInput) emailInput.value = '';
+        } catch (error) {
+          console.error('Newsletter subscription failed:', error);
+          if (window.FestoraUI && window.FestoraUI.showToast) {
+            window.FestoraUI.showToast('We could not save your subscription. Please try again.', 'error');
+          }
+        } finally {
+          if (submitButton) submitButton.disabled = false;
+        }
       });
     }
   }
