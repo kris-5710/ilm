@@ -243,7 +243,7 @@
         window.scrollTo({ top: 0, behavior: 'smooth' });
 
         if (window.FestoraUI && window.FestoraUI.showToast) {
-          window.FestoraUI.showToast(`Pass confirmed for ${saved.attendeeName}! Saved to My Bookings.`);
+          window.FestoraUI.showToast('Demo reservation saved in this browser. No ticket or payment was issued.', 'error');
         }
       }
     });
