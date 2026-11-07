@@ -418,6 +418,16 @@
     });
   }
 
+  // Explain social profiles that have not been connected yet instead of using dead links.
+  function initSocialPlaceholders() {
+    document.querySelectorAll('[data-social-placeholder]').forEach(button => {
+      button.addEventListener('click', () => {
+        const platform = button.getAttribute('data-social-placeholder');
+        showToast(`FESTORA's ${platform} profile has not been connected yet.`, 'error');
+      });
+    });
+  }
+
   // --- 5. Global Toast Notification System ---
   function showToast(message, type = 'success') {
     let container = document.querySelector('.toast-container');
@@ -529,5 +539,6 @@
     initBackToTop();
     initScrollReveals();
     initHeroVideoModal();
+    initSocialPlaceholders();
   });
 })();
