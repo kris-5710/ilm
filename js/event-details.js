@@ -29,7 +29,7 @@
           <div class="event-hero-meta-strip">
             <span class="badge badge-yellow">${event.dateBadge}</span>
             <span class="badge badge-orange">${event.category}</span>
-            <span class="badge badge-dark">VERIFIED FESTIVAL PASS</span>
+            <span class="badge badge-dark">DEMO EVENT LISTING</span>
           </div>
           <h1 class="event-hero-title">${event.name}</h1>
           <p class="event-hero-tagline">${event.tagline}</p>
@@ -167,7 +167,7 @@
         <div class="booking-panel-header">
           <div class="badge badge-yellow" style="margin-bottom:0.4rem;">OFFICIAL PASSES</div>
           <h3 class="booking-panel-title">SELECT PASS TIER</h3>
-          <p class="booking-panel-sub">Direct instant registration with electronic confirmation</p>
+          <p class="booking-panel-sub">Demo reservation preview — no payment or ticket is issued</p>
         </div>
 
         <!-- Ticket Tiers Radio Group -->
@@ -221,7 +221,7 @@
         </a>
 
         <p style="font-size:0.78rem;color:var(--text-muted);text-align:center;margin:0;">
-          Instant electronic confirmation • 100% Free cancellation up to 48 hrs before
+          Local demo reservation only • No ticket or admission is issued
         </p>
       `;
 
