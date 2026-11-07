@@ -124,7 +124,7 @@
             <div style="padding-top:1.25rem;border-top:1px solid var(--border-subtle);display:flex;align-items:center;gap:1.5rem;">
               <div>
                 <div style="font-family:var(--font-heading);font-size:1.6rem;font-weight:700;color:var(--accent-primary);">100%</div>
-                <div style="font-size:0.75rem;color:var(--text-muted);text-transform:uppercase;">Verified Admission</div>
+                <div style="font-size:0.75rem;color:var(--text-muted);text-transform:uppercase;">Demo Reservation Preview</div>
               </div>
               <div style="width:1px;height:40px;background:var(--border-subtle);"></div>
               <div>
@@ -282,7 +282,7 @@
       </div>
     </div>
     <div class="container footer-bottom">
-      <div><span>© 2025 FESTORA Technologies Ltd.</span></div>
+      <div><span>© 2026 FESTORA.</span></div>
     </div>
   </footer>
 
@@ -325,9 +325,9 @@
 
         if (valid) {
           if (window.FestoraUI && window.FestoraUI.showToast) {
-            window.FestoraUI.showToast(`Thank you, ${name}! Your inquiry has been dispatched to Festival HQ.`);
+            window.FestoraUI.showToast(`Thank you, ${name}! This demo form does not send messages yet. Your message has not been sent.`);
           }
-          contactForm.reset();
+          // Keep the user's message in the form because no delivery service is connected.
         }
       });
     });
