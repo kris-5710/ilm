@@ -72,7 +72,7 @@ const FESTORA_EVENTS = [
     ],
     faqs: [
       { q: "What is the age restriction?", a: "This event is strictly 18+. Government-issued photo ID (Aadhaar, Passport, Driver's License) is required at entry." },
-      { q: "Can I transfer or cancel my ticket?", a: "Registrations can be cancelled free of charge up to 48 hours before gates open directly through the My Bookings dashboard." },
+      { q: "Can I transfer or cancel my ticket?", a: "This prototype stores demo reservations in your browser only. No paid ticket, admission, or real cancellation service is provided." },
       { q: "Is re-entry allowed?", a: "No re-entry is permitted once wristband has been scanned for security protocols." }
     ]
   },
