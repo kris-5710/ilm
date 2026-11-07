@@ -2,14 +2,29 @@
    FESTORA – Event Catalog Data & Query Utilities
    ========================================================================== */
 
+/* Demo dates are generated from today so this prototype never shows stale dates.
+   Replace these sample dates with verified event data before public ticket sales. */
+function getDemoSchedule(daysFromNow, durationDays = 0) {
+  const start = new Date();
+  start.setDate(start.getDate() + daysFromNow);
+  start.setHours(18, 0, 0, 0);
+  const end = new Date(start);
+  end.setDate(end.getDate() + durationDays);
+  const fmt = (date, options) => new Intl.DateTimeFormat('en-IN', options).format(date);
+  const sameMonth = start.getMonth() === end.getMonth() && start.getFullYear() === end.getFullYear();
+  const date = durationDays ? (sameMonth ? `${fmt(start,{month:'short'})} ${start.getDate()}–${end.getDate()}, ${end.getFullYear()}` : `${fmt(start,{month:'short',day:'numeric'})} – ${fmt(end,{month:'short',day:'numeric',year:'numeric'})}`) : fmt(start,{month:'short',day:'numeric',year:'numeric'});
+  const dateBadge = fmt(start,{month:'short',day:'2-digit'}).toUpperCase();
+  const localTarget = `${start.getFullYear()}-${String(start.getMonth()+1).padStart(2,'0')}-${String(start.getDate()).padStart(2,'0')}T18:00:00`;
+  return { date, dateBadge, countdownTarget: localTarget };
+}
+
 const FESTORA_EVENTS = [
   {
     id: "sunburn-arena",
-    name: "Sunburn Arena 2025",
+    name: "Sunburn Arena 2026",
     tagline: "Asia's Premier Electronic Music Experience with Laser Spectacle",
     category: "EDM",
-    date: "Dec 12, 2025",
-    dateBadge: "DEC 12",
+    ...getDemoSchedule(14, 0),
     time: "16:00 - 01:00 IST",
     venue: "D.Y. Patil Stadium",
     city: "Mumbai",
@@ -18,7 +33,6 @@ const FESTORA_EVENTS = [
     image: "assets/images/events/sunburn-arena.jpg",
     featured: true,
     popular: true,
-    countdownTarget: "2025-12-12T16:00:00",
     description: "Sunburn Arena returns to Mumbai for an unforgettable night of arena-scale electronic dance music. Featuring 360-degree laser mapping, state-of-the-art pyro, and an international lineup of world-class headliners delivering high-octane basslines under the stars.",
     lineup: [
       { name: "Charlotte de Witte", role: "Headliner", genre: "Acid Techno", stage: "Solar Stage", time: "22:30 - 00:30", image: "assets/images/artists/artist-01.jpg" },
@@ -67,8 +81,7 @@ const FESTORA_EVENTS = [
     name: "Echoes of Tomorrow",
     tagline: "Three Days. Unstoppable Energy. Infinite Memories.",
     category: "EDM",
-    date: "Aug 20-22, 2025",
-    dateBadge: "AUG 20",
+    ...getDemoSchedule(28, 2),
     time: "15:00 - 02:00 IST",
     venue: "Vagator Hilltop",
     city: "Goa",
@@ -77,7 +90,6 @@ const FESTORA_EVENTS = [
     image: "assets/images/events/echoes-tomorrow.jpg",
     featured: true,
     popular: true,
-    countdownTarget: "2025-08-20T15:00:00",
     description: "Nestled along the cliffs of Vagator, Echoes of Tomorrow brings three nights of electronic euphoria. Designed for sound purists, featuring acoustic spatial architecture, immersive visual projections, and a multi-stage coastal oasis.",
     lineup: [
       { name: "Joris Voorn", role: "Headliner", genre: "Melodic House & Techno", stage: "Solar Stage", time: "23:00 - 01:30", image: "assets/images/artists/artist-04.jpg" },
@@ -105,8 +117,7 @@ const FESTORA_EVENTS = [
     name: "The Midnight Tour: Live at West",
     tagline: "Atmospheric Synthwave and Heavy Beats Under City Lights",
     category: "Rock",
-    date: "Sep 15, 2025",
-    dateBadge: "SEP 15",
+    ...getDemoSchedule(42, 0),
     time: "19:00 - 23:30 IST",
     venue: "Jio World Garden",
     city: "Mumbai",
@@ -115,7 +126,6 @@ const FESTORA_EVENTS = [
     image: "assets/images/events/midnight-tour.jpg",
     featured: true,
     popular: true,
-    countdownTarget: "2025-09-15T19:00:00",
     description: "An electric stadium rock and synthwave experience capturing nostalgic neon cityscapes, driving analog synthesizers, and soaring guitar riffs that will reverberate through the night.",
     lineup: [
       { name: "Drayen", role: "Headliner", genre: "Alternative Rock", stage: "Main Stage", time: "21:00 - 23:00", image: "assets/images/artists/artist-03.jpg" },
@@ -137,8 +147,7 @@ const FESTORA_EVENTS = [
     name: "Indie Waves Festival",
     tagline: "Celebrating Independent Voices, Dream Pop & Soulful Acoustics",
     category: "Indie",
-    date: "Oct 04, 2025",
-    dateBadge: "OCT 04",
+    ...getDemoSchedule(56, 0),
     time: "15:00 - 22:30 IST",
     venue: "Jayamahal Palace Grounds",
     city: "Bengaluru",
@@ -147,7 +156,6 @@ const FESTORA_EVENTS = [
     image: "assets/images/events/indie-waves.jpg",
     featured: true,
     popular: false,
-    countdownTarget: "2025-10-04T15:00:00",
     description: "Immerse yourself in lush reverb, dream-pop melodies, and honest songwriting. Indie Waves gathers the subcontinent's most innovative independent songwriters in a relaxed, open-air garden venue.",
     lineup: [
       { name: "Sonora Collective", role: "Headliner", genre: "Dream Pop", stage: "Garden Stage", time: "20:30 - 22:00", image: "assets/images/artists/artist-02.jpg" },
@@ -170,8 +178,7 @@ const FESTORA_EVENTS = [
     name: "Neon Nights Underground",
     tagline: "Industrial Warehouse Techno, Hypnotic Visuals & Deep Bass",
     category: "EDM",
-    date: "Nov 08, 2025",
-    dateBadge: "NOV 08",
+    ...getDemoSchedule(70, 0),
     time: "21:00 - 05:00 IST",
     venue: "The Great Eastern Mills",
     city: "Mumbai",
@@ -180,7 +187,6 @@ const FESTORA_EVENTS = [
     image: "assets/images/events/neon-nights.jpg",
     featured: true,
     popular: true,
-    countdownTarget: "2025-11-08T21:00:00",
     description: "A dark industrial warehouse experience focused strictly on uncompromising techno, brutalist lighting bars, and void acoustics. An intimate night where music and darkness fuse.",
     lineup: [
       { name: "Amélie Lens", role: "Headliner", genre: "Industrial Techno", stage: "Turbine Hall", time: "01:30 - 04:30", image: "assets/images/artists/artist-02.jpg" },
@@ -202,8 +208,7 @@ const FESTORA_EVENTS = [
     name: "Primal Scream + The Jesus and Mary Chain",
     tagline: "Legends of Alternative Rock and Psychedelic Noise Pop",
     category: "Rock",
-    date: "Sep 03, 2025",
-    dateBadge: "SEP 03",
+    ...getDemoSchedule(84, 0),
     time: "18:30 - 23:00 IST",
     venue: "Indira Gandhi Indoor Arena",
     city: "Delhi",
@@ -212,7 +217,6 @@ const FESTORA_EVENTS = [
     image: "assets/images/events/primal-scream.jpg",
     featured: true,
     popular: true,
-    countdownTarget: "2025-09-03T18:30:00",
     description: "An iconic co-headlining rock spectacular bringing together two of the most influential UK alternative rock institutions. Expect electrifying anthems, feedback-drenched guitars, and timeless swagger.",
     lineup: [
       { name: "Primal Scream", role: "Co-Headliner", genre: "Alternative Rock", stage: "Arena Stage", time: "21:00 - 22:45", image: "assets/images/artists/artist-01.jpg" },
@@ -234,8 +238,7 @@ const FESTORA_EVENTS = [
     name: "Sound of Freedom World Tour",
     tagline: "Stadium Anthem Hip-Hop and Global Chart-Topping Spectacle",
     category: "Hip-Hop",
-    date: "Oct 18, 2025",
-    dateBadge: "OCT 18",
+    ...getDemoSchedule(98, 0),
     time: "18:00 - 23:30 IST",
     venue: "Jawaharlal Nehru Stadium",
     city: "Delhi",
@@ -244,7 +247,6 @@ const FESTORA_EVENTS = [
     image: "assets/images/events/stage-seating-map.png",
     featured: false,
     popular: true,
-    countdownTarget: "2025-10-18T18:00:00",
     description: "The global hip-hop tour touching down in Delhi for a massive stadium performance with multi-tier runway stages, 50-foot pyro cannons, and explosive live collaborations.",
     lineup: [
       { name: "Drayen", role: "Special Guest", genre: "Rap & Beats", stage: "Stadium Center", time: "20:00 - 21:00", image: "assets/images/artists/artist-03.jpg" },
@@ -267,8 +269,7 @@ const FESTORA_EVENTS = [
     name: "Acoustic Sessions: Intimate Night",
     tagline: "Unplugged Strings, Warm Vocals & Candlelit Ambience",
     category: "Pop",
-    date: "Nov 22, 2025",
-    dateBadge: "NOV 22",
+    ...getDemoSchedule(112, 0),
     time: "19:00 - 22:00 IST",
     venue: "Royal Opera House",
     city: "Mumbai",
@@ -277,7 +278,6 @@ const FESTORA_EVENTS = [
     image: "assets/images/events/acoustic-sessions.jpg",
     featured: false,
     popular: false,
-    countdownTarget: "2025-11-22T19:00:00",
     description: "An intimate, candlelit celebration of acoustic musicianship inside the historic Royal Opera House. Stripped-back arrangements, rich vocal harmonies, and stories behind the songs.",
     lineup: [
       { name: "Sonora", role: "Vocalist", genre: "Indie Pop & Soul", stage: "Grand Auditorium", time: "20:15 - 21:45", image: "assets/images/artists/artist-02.jpg" },
@@ -316,7 +316,7 @@ const FestoraData = {
   },
 
   getCategories() {
-    return ["All", "EDM", "Rock", "Hip-Hop", "Indie", "Pop"];
+    return ["All", "EDM", "Rock", "Hip-Hop", "Indie", "Pop", "Jazz"];
   },
 
   getCities() {
@@ -353,7 +353,7 @@ const FestoraData = {
     } else if (sortBy === "popularity") {
       results.sort((a, b) => (b.popular ? 1 : 0) - (a.popular ? 1 : 0));
     } else {
-      // Default date-asc (order defined in array)
+      results.sort((a, b) => new Date(a.countdownTarget) - new Date(b.countdownTarget));
     }
 
     return results;
