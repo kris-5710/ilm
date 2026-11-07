@@ -5,6 +5,12 @@
 (function () {
   'use strict';
 
+  function escapeHTML(value) {
+    return String(value ?? '').replace(/[&<>"']/g, char => ({
+      '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
+    }[char]));
+  }
+
   function initBookingsDashboard() {
     const listMount = document.getElementById('bookings-mount');
     const emptyState = document.getElementById('bookings-empty-state');
@@ -31,29 +37,29 @@
       listMount.style.display = 'flex';
 
       listMount.innerHTML = bookings.map(b => `
-        <article class="booking-card-item reveal-on-scroll is-revealed" data-booking-id="${b.id}">
+        <article class="booking-card-item reveal-on-scroll is-revealed" data-booking-id="${escapeHTML(b.id)}">
           <div class="booking-card-poster-wrap">
-            <img class="booking-card-poster" src="${b.eventImage || 'assets/images/events/sunburn-arena.jpg'}" alt="${b.eventName} poster" loading="lazy">
+            <img class="booking-card-poster" src="${b.eventImage || 'assets/images/events/sunburn-arena.jpg'}" alt="${escapeHTML(b.eventName)} poster" loading="lazy">
           </div>
           <div class="booking-card-body">
             
             <div>
               <div class="booking-card-header">
                 <div>
-                  <div class="booking-ref-badge">PASS ID: ${b.id}</div>
-                  <h2 class="booking-event-name">${b.eventName}</h2>
+                  <div class="booking-ref-badge">PASS ID: ${escapeHTML(b.id)}</div>
+                  <h2 class="booking-event-name">${escapeHTML(b.eventName)}</h2>
                 </div>
-                <span class="badge badge-live">CONFIRMED PASS</span>
+                <span class="badge badge-live">DEMO RESERVATION</span>
               </div>
 
               <div class="booking-meta-row">
                 <div class="booking-meta-item">
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="18" height="18" x="3" y="4" rx="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg>
-                  <span>${b.eventDate}</span>
+                  <span>${escapeHTML(b.eventDate)}</span>
                 </div>
                 <div class="booking-meta-item">
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
-                  <span>${b.eventVenue}, ${b.eventCity}</span>
+                  <span>${escapeHTML(b.eventVenue)}, ${escapeHTML(b.eventCity)}</span>
                 </div>
               </div>
             </div>
@@ -62,11 +68,11 @@
             <div class="booking-card-details-grid">
               <div class="booking-detail-col">
                 <span class="booking-detail-label">Primary Attendee</span>
-                <span class="booking-detail-val">${b.attendeeName}</span>
+                <span class="booking-detail-val">${escapeHTML(b.attendeeName)}</span>
               </div>
               <div class="booking-detail-col">
                 <span class="booking-detail-label">Tier Category</span>
-                <span class="booking-detail-val">${b.tierName}</span>
+                <span class="booking-detail-val">${escapeHTML(b.tierName)}</span>
               </div>
               <div class="booking-detail-col">
                 <span class="booking-detail-label">Total Amount</span>
@@ -86,7 +92,7 @@
                 </button>
               </div>
 
-              <button type="button" class="btn-cancel-booking" data-id="${b.id}" data-name="${b.eventName}">
+              <button type="button" class="btn-cancel-booking" data-id="${escapeHTML(b.id)}" data-name="${escapeHTML(b.eventName)}">
                 <svg style="width:13px;height:13px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
                 <span>CANCEL PASS</span>
               </button>
@@ -140,7 +146,7 @@
         if (deleted) {
           renderBookings();
           if (window.FestoraUI && window.FestoraUI.showToast) {
-            window.FestoraUI.showToast('Your reservation has been successfully cancelled.');
+            window.FestoraUI.showToast('Your demo reservation has been removed from this browser.');
           }
         }
       });
