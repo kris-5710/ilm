@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Event Registration – FESTORA</title>
-  <meta name="description" content="Official event pass registration. Reserve tickets for concerts and festivals with instant confirmation.">
+  <meta name="description" content="Demo event registration preview. Reservations are stored locally in this browser and are not paid tickets.">
   <meta name="theme-color" content="#090909">
 
   <!-- Core Stylesheets -->
@@ -88,9 +88,9 @@
       <div class="registration-container" id="registration-form-wrap">
         
         <div class="registration-header">
-          <span class="section-tag" style="margin-bottom:0.4rem;">OFFICIAL PASS RESERVATION</span>
+          <span class="section-tag" style="margin-bottom:0.4rem;">DEMO RESERVATION PREVIEW</span>
           <h1 class="registration-title">REGISTER FOR EVENT</h1>
-          <p class="registration-sub">Enter your details to reserve your festival wristband or arena pass.</p>
+          <p class="registration-sub">Enter your details to preview the reservation flow. No payment is collected and no real ticket is issued.</p>
         </div>
 
         <form id="registration-form" novalidate>
@@ -190,11 +190,11 @@
 
           <!-- Submit Button -->
           <button type="submit" id="btn-submit-registration" class="btn btn-primary btn-pill btn-block btn-lg glow-orange">
-            <span>CONFIRM REGISTRATION & GET PASS ↗</span>
+            <span>SAVE DEMO RESERVATION ↗</span>
           </button>
 
           <p style="font-size:0.75rem;color:var(--text-muted);text-align:center;margin-top:1rem;">
-            By completing this form, you agree to FESTORA admission protocols and festival safety rules.
+            Demo only: your details are saved in this browser. Do not enter sensitive personal information.
           </p>
 
         </form>
@@ -212,7 +212,7 @@
 
         <h2 class="confirmation-title">YOU'RE ON THE LIST!</h2>
         <p class="confirmation-sub">
-          Your festival registration has been successfully recorded and confirmed. Your official pass details are displayed below.
+          Your demo reservation has been saved in this browser only. This is not a paid ticket or verified admission pass.
         </p>
 
         <!-- Digital Pass Card -->
@@ -220,7 +220,7 @@
           
           <div class="ticket-pass-header">
             <div>
-              <span class="badge badge-yellow" id="confirm-badge">CONFIRMED PASS</span>
+              <span class="badge badge-yellow" id="confirm-badge">DEMO RESERVATION</span>
               <h3 class="ticket-pass-event-title" id="confirm-event-name">Sunburn Arena 2025</h3>
               <p style="font-size:0.82rem;color:var(--text-secondary);margin:0;" id="confirm-event-date-venue">
                 Dec 12, 2025 • D.Y. Patil Stadium, Mumbai
