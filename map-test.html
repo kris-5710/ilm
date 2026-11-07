@@ -38,7 +38,7 @@
   <script>
     const token = "pk.eyJ1Ijoia3Jpcy01NzEwIiwiYSI6ImNtdzJkbGpkaTAxd2wyeHNlbXcwN3ZmbjEifQ.ICT0X7U8K_sNfHLV9f2KCg";
     const status = document.getElementById("status");
-    if (!token || token === "pk.eyJ1Ijoia3Jpcy01NzEwIiwiYSI6ImNtdzJkbGpkaTAxd2wyeHNlbXcwN3ZmbjEifQ.ICT0X7U8K_sNfHLV9f2KCg" || !token.startsWith("pk.")) {
+    if (!token || !token.startsWith("pk.")) {
       status.textContent = "Add your Mapbox public token (starts with pk.) in map-test.html to start the test.";
     } else {
       mapboxgl.accessToken = token;
