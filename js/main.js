@@ -178,12 +178,14 @@
   function initHomepageExtras() {
     // 1. Countdown Timer
     const countdownEl = document.getElementById('homepage-countdown');
-    if (countdownEl && window.FestoraUI && window.FestoraUI.initCountdown) {
-      // Pick target date: 280 days ahead from today for live ticking demo
-      const futureDate = new Date();
-      futureDate.setDate(futureDate.getDate() + 45);
-      futureDate.setHours(18, 0, 0, 0);
-      window.FestoraUI.initCountdown(futureDate.toISOString(), countdownEl);
+    if (countdownEl && window.FestoraUI && window.FestoraUI.initCountdown && window.FestoraData) {
+      const featuredEvent = window.FestoraData.getEventById('echoes-tomorrow');
+      if (featuredEvent) {
+        countdownEl.dataset.target = featuredEvent.countdownTarget;
+        window.FestoraUI.initCountdown(featuredEvent.countdownTarget, countdownEl);
+        const meta = document.getElementById('homepage-featured-meta');
+        if (meta) meta.textContent = `${featuredEvent.date} • ${featuredEvent.venue}, ${featuredEvent.city} • 3 Stages • 48 Hours of Sonic Euphoria`;
+      }
     }
 
     // 2. Newsletter Form
