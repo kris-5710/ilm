@@ -268,7 +268,7 @@ const FESTORA_EVENTS = [
     id: "acoustic-sessions",
     name: "Acoustic Sessions: Intimate Night",
     tagline: "Unplugged Strings, Warm Vocals & Candlelit Ambience",
-    category: "Pop",
+    category: "Jazz",
     ...getDemoSchedule(112, 0),
     time: "19:00 - 22:00 IST",
     venue: "Royal Opera House",
