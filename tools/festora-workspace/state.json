@@ -1,0 +1,18 @@
+{
+  "task": "Waiting for the next FESTORA task",
+  "phase": "idle",
+  "iteration": 0,
+  "statuses": {
+    "doers": "waiting",
+    "checkers": "waiting",
+    "judge": "waiting"
+  },
+  "checks": {},
+  "score": null,
+  "decision": "pending",
+  "previewPath": "/index.html",
+  "notes": [
+    "Workspace initialized. Start a task to track its progress."
+  ],
+  "updatedAt": null
+}
