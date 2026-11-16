@@ -79,6 +79,7 @@
 
     document.documentElement.setAttribute('data-theme', currentTheme);
     updateThemeIcons(currentTheme);
+    toggleBtns.forEach(btn => btn.setAttribute('aria-pressed', currentTheme === 'dark' ? 'true' : 'false'));
 
     toggleBtns.forEach(btn => {
       btn.addEventListener('click', () => {
@@ -87,6 +88,7 @@
         document.documentElement.setAttribute('data-theme', newTheme);
         localStorage.setItem('festora_theme', newTheme);
         updateThemeIcons(newTheme);
+        toggleBtns.forEach(btn => btn.setAttribute('aria-pressed', newTheme === 'dark' ? 'true' : 'false'));
       });
     });
 
