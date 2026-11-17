@@ -160,18 +160,77 @@
     });
   }
 
-  // --- 4c. Homepage Upcoming Events Dynamic Renderer ---
+  // --- 4c. Homepage event discovery ---
   function initHomepageEvents() {
     const grid = document.getElementById('homepage-events-grid');
     if (!grid || typeof FestoraData === 'undefined') return;
 
-    const featured = FestoraData.getFeaturedEvents();
-    grid.innerHTML = featured.map(event => FestoraData.renderEventCard(event)).join('');
-    
-    // Re-observe scroll reveals on newly injected cards
-    if (window.FestoraUI && window.FestoraUI.initScrollReveals) {
-      window.FestoraUI.initScrollReveals();
+    const search = document.getElementById('home-event-search');
+    const city = document.getElementById('home-event-city');
+    const chips = Array.from(document.querySelectorAll('.home-genre-chip'));
+    const count = document.getElementById('home-results-count');
+    const empty = document.getElementById('home-events-empty');
+    const reset = document.getElementById('home-events-reset');
+    const state = { query: '', city: 'All Cities', category: 'All' };
+
+    if (city && typeof FestoraData.getCities === 'function') {
+      FestoraData.getCities().forEach(name => {
+        if (name === 'All Cities') return;
+        const option = document.createElement('option');
+        option.value = name;
+        option.textContent = name;
+        city.appendChild(option);
+      });
     }
+
+    function render() {
+      const results = FestoraData.filterEvents({
+        query: state.query,
+        city: state.city,
+        category: state.category,
+        sortBy: 'date-asc'
+      });
+      grid.innerHTML = results.map(event => FestoraData.renderEventCard(event)).join('');
+      grid.hidden = results.length === 0;
+      if (empty) empty.hidden = results.length !== 0;
+      if (count) count.textContent = results.length + (results.length === 1 ? ' experience' : ' experiences');
+      if (window.FestoraUI && window.FestoraUI.initScrollReveals) {
+        window.FestoraUI.initScrollReveals();
+      }
+    }
+
+    if (search) search.addEventListener('input', () => {
+      state.query = search.value.trim();
+      render();
+    });
+    if (city) city.addEventListener('change', () => {
+      state.city = city.value;
+      render();
+    });
+    chips.forEach(chip => chip.addEventListener('click', () => {
+      state.category = chip.dataset.genre || 'All';
+      chips.forEach(item => {
+        const active = item === chip;
+        item.classList.toggle('active', active);
+        item.setAttribute('aria-pressed', String(active));
+      });
+      render();
+    }));
+    if (reset) reset.addEventListener('click', () => {
+      state.query = '';
+      state.city = 'All Cities';
+      state.category = 'All';
+      if (search) search.value = '';
+      if (city) city.value = 'All Cities';
+      chips.forEach(chip => {
+        const active = chip.dataset.genre === 'All';
+        chip.classList.toggle('active', active);
+        chip.setAttribute('aria-pressed', String(active));
+      });
+      render();
+    });
+
+    render();
   }
 
   // --- 4d. Homepage Festival Countdown & Newsletter ---
