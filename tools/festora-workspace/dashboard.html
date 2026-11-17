@@ -40,14 +40,40 @@ main{min-width:0;display:flex;flex-direction:column;background:#0b0c12}.previewb
 <h2 style="margin-top:20px">Activity log</h2><ul class="notes" id="notes"><li>Workspace ready. Start a task to see progress.</li></ul>
 <div class="error" id="error"></div>
 </aside>
-<main><div class="previewbar"><b>LIVE WEBSITE PREVIEW</b><div><span class="muted" id="preview-path">/index.html</span> <button id="refresh">Refresh preview ↻</button></div></div><div class="frame"><iframe id="preview" src="/index.html" title="Live FESTORA website preview"></iframe></div></main>
+<main><div class="previewbar"><b>LIVE WEBSITE PREVIEW <span class="muted" id="preview-sync" style="font-weight:400;letter-spacing:0;margin-left:8px">● Auto-refresh ready</span></b><div><span class="muted" id="preview-path">/index.html</span> <button id="refresh">Refresh preview ↻</button></div></div><div class="frame"><iframe id="preview" src="/index.html" title="Live FESTORA website preview"></iframe></div></main>
 </div>
 <script>
 const $=id=>document.getElementById(id);
 function setRole(id,value){const el=$(id);el.textContent=(value||"waiting").replaceAll("_"," ");el.className="state";if(value==="active")el.style.color="var(--blue)";else if(value==="done"||value==="pass")el.style.color="var(--green)";else if(value==="fail"||value==="blocked")el.style.color="#ff9a86";else el.style.color="var(--muted)"}
 function render(s){$("task").textContent=s.task||"Waiting for a task…";$("phase").textContent=s.phase||"idle";$("iteration").textContent="Iteration "+(s.iteration||0);$("decision").textContent=(s.decision||"pending").toUpperCase();$("decision").className="pill "+(s.decision==="approved"?"done":s.decision==="not_approved"||s.decision==="blocked"?"fail":"");setRole("doers",s.statuses?.doers);setRole("checkers",s.statuses?.checkers);setRole("judge",s.statuses?.judge);$("score").innerHTML=s.score===null||s.score===undefined?'—<small>/10</small>':Number(s.score).toFixed(1)+'<small>/10</small>';$("score-note").textContent=s.score===null||s.score===undefined?"Not graded yet":(Number(s.score)>=9?"Meets 9.0 gate":"Below 9.0 gate");const c=s.checks||{};$("checks").innerHTML=Object.keys(c).length?Object.entries(c).map(([k,v])=>'<div class="check"><span>'+escapeText(k)+'</span><b>'+escapeText(String(v))+'</b></div>').join(""):'<div class="check"><span>Awaiting checks</span><span>—</span></div>';$("notes").innerHTML=(s.notes||[]).slice(-12).reverse().map(n=>'<li>'+escapeText(n)+'</li>').join("")||"<li>No activity recorded.</li>";const p=s.previewPath||"/index.html";$("preview-path").textContent=p;if($("preview").dataset.path!==p){$("preview").src=p;$("preview").dataset.path=p}}
 function escapeText(x){return String(x).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]))}
-async function poll(){try{const r=await fetch("/__workspace/state",{cache:"no-store"});if(!r.ok)throw Error("HTTP "+r.status);render(await r.json());$("error").textContent=""}catch(e){$("error").textContent="Could not load workspace state: "+e.message}}
-$("refresh").addEventListener("click",()=>{const f=$("preview");f.src=f.src.split("#")[0].split("?")[0]+"?refresh="+Date.now()});poll();setInterval(poll,1500);
+let lastRevision=null;
+async function refreshRevision(){
+  try{
+    const response=await fetch("/__workspace/revision",{cache:"no-store"});
+    if(!response.ok)throw Error("HTTP "+response.status);
+    const revision=await response.text();
+    if(lastRevision===null){lastRevision=revision;$("preview-sync").textContent="● Auto-refresh active";$("preview-sync").style.color="var(--green)";return}
+    if(revision!==lastRevision){
+      lastRevision=revision;
+      const frame=$("preview");
+      const base=(frame.getAttribute("src")||"/index.html").split("#")[0].split("?")[0];
+      frame.src=base+"?workspace-refresh="+Date.now();
+      $("preview-sync").textContent="● Website changes detected · preview refreshed";
+      $("preview-sync").style.color="var(--green)";
+    }
+  }catch(e){$("preview-sync").textContent="● Auto-refresh unavailable";$("preview-sync").style.color="#ff9a86"}
+}
+async function poll(){
+  try{const r=await fetch("/__workspace/state",{cache:"no-store"});if(!r.ok)throw Error("HTTP "+r.status);render(await r.json());$("error").textContent=""}
+  catch(e){$("error").textContent="Could not load workspace state: "+e.message}
+  await refreshRevision();
+}
+$("refresh").addEventListener("click",()=>{
+  const f=$("preview");const base=(f.getAttribute("src")||"/index.html").split("#")[0].split("?")[0];
+  f.src=base+"?workspace-refresh="+Date.now();
+  $("preview-sync").textContent="● Preview refreshed manually";$("preview-sync").style.color="var(--green)";
+});
+poll();setInterval(poll,1500);
 </script>
 </body></html>
