@@ -191,7 +191,7 @@
         sortBy: 'date-asc'
       });
       grid.innerHTML = results.map(event => FestoraData.renderEventCard(event)).join('');
-      grid.hidden = results.length === 0;
+      grid.style.display = results.length === 0 ? 'none' : 'grid';
       if (empty) empty.hidden = results.length !== 0;
       if (count) count.textContent = results.length + (results.length === 1 ? ' experience' : ' experiences');
       if (window.FestoraUI && window.FestoraUI.initScrollReveals) {
