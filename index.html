@@ -238,7 +238,7 @@
           <div class="section-title-wrap">
             <span class="section-tag">CURATED EXPERIENCES</span>
             <h2 class="section-title">UPCOMING EVENTS</h2>
-            <p class="section-subtitle">The moments you've been waiting for. Hand-picked electronic arenas, stadium tours, and open-air festivals.</p>
+            <p class="section-subtitle">Search by artist, city or sound. Find the live experiences worth leaving home for.</p>
           </div>
           <div class="section-action">
             <a href="events.html" class="btn btn-secondary btn-pill btn-sm">
@@ -251,9 +251,41 @@
           </div>
         </div>
 
+        <!-- Homepage event discovery controls -->
+        <div class="home-discovery reveal-on-scroll" aria-label="Find an event">
+          <div class="home-discovery-search">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7.5"></circle><path d="m16.5 16.5 4 4"></path></svg>
+            <input id="home-event-search" type="search" placeholder="Search events, artists or venues" aria-label="Search events, artists or venues" autocomplete="off">
+            <span class="search-shortcut" aria-hidden="true">DISCOVER</span>
+          </div>
+          <label class="home-discovery-city">
+            <span>LOCATION</span>
+            <select id="home-event-city" aria-label="Filter events by city">
+              <option value="All Cities">All cities</option>
+            </select>
+          </label>
+          <a class="home-discovery-submit" href="events.html" id="home-discovery-link">Explore all events <span aria-hidden="true">↗</span></a>
+        </div>
+        <div class="home-discovery-bottom">
+          <div class="home-genre-filters" id="home-genre-filters" aria-label="Filter by music genre">
+            <button type="button" class="home-genre-chip active" data-genre="All" aria-pressed="true">All events</button>
+            <button type="button" class="home-genre-chip" data-genre="EDM" aria-pressed="false">EDM</button>
+            <button type="button" class="home-genre-chip" data-genre="Rock" aria-pressed="false">Rock</button>
+            <button type="button" class="home-genre-chip" data-genre="Hip-Hop" aria-pressed="false">Hip-Hop</button>
+            <button type="button" class="home-genre-chip" data-genre="Indie" aria-pressed="false">Indie</button>
+            <button type="button" class="home-genre-chip" data-genre="Pop" aria-pressed="false">Pop</button>
+            <button type="button" class="home-genre-chip" data-genre="Jazz" aria-pressed="false">Jazz</button>
+          </div>
+          <span class="home-results-count" id="home-results-count" aria-live="polite">Loading experiences…</span>
+        </div>
         <!-- Dynamic Event Cards Grid -->
         <div class="events-grid" id="homepage-events-grid">
           <!-- Rendered dynamically on load by FestoraData -->
+        </div>
+        <div class="home-events-empty" id="home-events-empty" hidden>
+          <span class="section-tag">NO MATCHES YET</span>
+          <p>We couldn't find an experience for those filters.</p>
+          <button type="button" class="btn btn-secondary btn-sm" id="home-events-reset">Clear filters</button>
         </div>
 
       </div>
